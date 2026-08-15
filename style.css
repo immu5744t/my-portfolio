@@ -1,0 +1,401 @@
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0f19;
+    color: white;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+#loader {
+    position: fixed;
+    inset: 0;
+
+    background: #0b0f19;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    animation: loaderHide 1s ease forwards;
+    animation-delay: 2s;
+}
+
+.loader-text {
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 8px;
+
+    animation: loaderText 1.5s ease infinite alternate;
+}
+
+@keyframes loaderText {
+
+    from {
+        opacity: 0.3;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes loaderHide {
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    background: rgba(11, 15, 25, 0.85);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 1000;
+}
+
+.navbar {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.logo span {
+    color: #00e5ff;
+}
+
+.nav-links {
+
+    display: flex;
+
+    list-style: none;
+
+    gap: 30px;
+}
+
+.nav-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+
+    color: #00e5ff;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+
+    min-height: 100vh;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 120px 20px 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+.home-content {
+
+    max-width: 650px;
+
+    animation: slideLeft 1s ease;
+}
+
+.intro {
+
+    color: #00e5ff;
+
+    font-size: 18px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
+}
+
+.home h1 {
+
+    font-size: 55px;
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+}
+
+.home h1 span {
+
+    color: #00e5ff;
+}
+
+.home h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+
+    color: #ddd;
+}
+
+.description {
+
+    color: #aaa;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.home-buttons {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.btn {
+
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background: #00e5ff;
+
+    color: #071018;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
+}
+
+.btn.secondary {
+
+    background: transparent;
+
+    border: 1px solid #00e5ff;
+
+    color: #00e5ff;
+}
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.home-image {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.image-circle {
+
+    width: 330px;
+
+    height: 330px;
+
+    border-radius: 50%;
+
+    padding: 8px;
+
+    border: 3px solid #00e5ff;
+
+    animation: float 4s ease-in-out infinite;
+}
+
+.image-circle img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* =========================
+   TEMPORARY SECTIONS
+========================= */
+
+section:not(#home) {
+
+    min-height: 70vh;
+
+    padding: 120px 20px;
+
+    text-align: center;
+}
+
+section:not(#home) h2 {
+
+    font-size: 40px;
+
+    color: #00e5ff;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes slideLeft {
+
+    from {
+        opacity: 0;
+
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .home {
+
+        flex-direction: column-reverse;
+
+        text-align: center;
+
+        padding-top: 140px;
+    }
+
+    .home h1 {
+
+        font-size: 40px;
+    }
+
+    .home h2 {
+
+        font-size: 22px;
+    }
+
+    .description {
+
+        font-size: 16px;
+    }
+
+    .home-buttons {
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .image-circle {
+
+        width: 240px;
+
+        height: 240px;
+    }
+}
