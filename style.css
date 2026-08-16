@@ -273,18 +273,19 @@ header {
 }
 
 .image-circle {
-
     width: 330px;
-
     height: 330px;
-
     border-radius: 50%;
-
     padding: 8px;
-
     border: 3px solid #00e5ff;
-
     animation: float 4s ease-in-out infinite;
+
+    position: relative;
+
+    box-shadow:
+        0 0 10px #00e5ff,
+        0 0 25px rgba(0, 229, 255, 0.6),
+        0 0 50px rgba(0, 229, 255, 0.3);
 }
 
 .image-circle img {
@@ -297,12 +298,23 @@ header {
 
     border-radius: 50%;
 }
+.image-circle:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow:
+        0 0 15px #00e5ff,
+        0 0 35px rgba(0, 229, 255, 0.7),
+        0 0 60px rgba(0, 229, 255, 0.4);
+    transition: 0.3s ease;
+}
+.image-circle {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 /* =========================
    ABOUT SECTION
 ========================= */
 
 .about {
-    min-height: 100vh;
+    min-height: 85vh;
     padding: 120px 20px 100px;
     max-width: 1200px;
     margin: auto;
@@ -972,8 +984,11 @@ header {
 @media (max-width: 768px) {
 
     .nav-links {
-        display: none;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
 
     .home {
 
@@ -1597,5 +1612,743 @@ header {
 
     .contact-card {
         padding: 35px 25px;
+    }
+}
+/* ================================
+   PORTFOLIO ANIMATIONS
+================================ */
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero animation */
+.hero-content {
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-image {
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+/* Section headings */
+.section-title {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Cards */
+.card,
+.project-card,
+.education-card,
+.internship-card,
+.certificate-card,
+.contact-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card hover effect */
+.card:hover,
+.project-card:hover,
+.education-card:hover,
+.internship-card:hover,
+.certificate-card:hover,
+.contact-item:hover {
+    transform: translateY(-6px);
+}
+
+/* Button hover */
+.btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Smooth page scrolling */
+html {
+    scroll-behavior: smooth;
+}
+/* ================================
+   SCROLL REVEAL
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ================================
+   NAVBAR POLISH
+================================ */
+
+nav a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #00d9ff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #00d9ff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Active navigation link */
+nav a.active {
+    color: #00d9ff;
+}
+
+nav a.active::after {
+    width: 100%;
+}
+/* ================================
+   MOBILE RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 768px) {
+
+    /* Navigation */
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    /* Hero */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 100px 20px 60px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-image {
+        margin-top: 40px;
+    }
+
+    /* About */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Skills */
+    .skills-container,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Projects */
+    .project-card {
+        flex-direction: column;
+    }
+
+    /* Education / Experience */
+    .education-card,
+    .internship-card {
+        width: 100%;
+    }
+
+    /* Certificates */
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Section spacing */
+    section {
+        padding: 80px 20px;
+    }
+}
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    section {
+        padding: 70px 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+}
+/* ================================
+   MOBILE RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 768px) {
+
+    /* Navbar */
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    /* Home */
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 100px 20px 60px;
+        gap: 40px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Sections */
+    section {
+        padding: 70px 20px;
+    }
+
+    /* About */
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-text {
+        width: 100%;
+    }
+
+    .about-cards {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    /* Skills */
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Projects */
+    .project-card {
+        flex-direction: column;
+    }
+
+    /* Education */
+    .education-card {
+        width: 100%;
+    }
+
+    /* Certifications */
+    .certifications-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact */
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-card {
+        width: 100%;
+    }
+}
+/* =========================
+   MOBILE RESPONSIVE NAVBAR
+   ========================= */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+}
+/* ================================
+   MOBILE MENU
+   ================================ */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Mobile screen */
+@media (max-width: 768px) {
+
+    .navbar {
+        position: relative;
+        justify-content: center;
+    }
+
+    /* Remove IMMU on mobile */
+    .logo {
+        display: none;
+    }
+
+    /* Show ☰ */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        z-index: 1001;
+    }
+
+    /* Hide menu initially */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+
+        flex-direction: column;
+        align-items: center;
+
+        width: 180px;
+        padding: 15px;
+
+        background: #111827;
+        border: 1px solid #263449;
+        border-radius: 12px;
+
+        z-index: 1000;
+    }
+
+    /* Show menu after clicking ☰ */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px;
+        margin: 0;
+    }
+}
+/* FINAL MOBILE MENU FIX */
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block !important;
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        z-index: 9999;
+
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .logo {
+        display: none !important;
+    }
+
+    .nav-links {
+        display: none !important;
+        position: fixed !important;
+        top: 60px !important;
+        right: 15px !important;
+
+        width: 180px !important;
+        padding: 15px !important;
+
+        flex-direction: column !important;
+        gap: 0 !important;
+
+        background: #111827 !important;
+        border-radius: 12px !important;
+
+        z-index: 9998 !important;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .nav-links li a {
+        display: block !important;
+        padding: 12px !important;
+    }
+}
+/* ================================
+   MENU BEHAVIOR
+================================ */
+
+/* Desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        z-index: 9999;
+
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+}
+/* =================================
+   GLOWING MOUSE EFFECT
+   ================================= */
+
+.mouse-glow {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #00e5ff;
+
+    box-shadow:
+        0 0 8px #00e5ff,
+        0 0 18px #00e5ff,
+        0 0 35px #00e5ff;
+
+    pointer-events: none;
+    z-index: 999999;
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        left 0.08s ease,
+        top 0.08s ease;
+}
+
+/* Make the glow bigger when hovering links/buttons */
+
+a:hover ~ .mouse-glow,
+button:hover ~ .mouse-glow {
+    width: 28px;
+    height: 28px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .mouse-glow {
+        display: none;
+    }
+}
+/* Animated profile border glow */
+
+.image-circle {
+    position: relative;
+    box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.5),
+        0 0 25px rgba(0, 229, 255, 0.25);
+}
+
+.image-circle::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: #00e5ff;
+    border-right-color: #00e5ff;
+    animation: rotateGlow 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateGlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Ambient glow behind profile photo */
+
+.home-image {
+    position: relative;
+}
+
+.home-image::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #00e5ff;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 0;
+    animation: ambientGlow 4s ease-in-out infinite;
+}
+
+.image-circle {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes ambientGlow {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.12;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.22;
+    }
+}
+/* ================================
+   BUTTON HOVER EFFECT
+================================ */
+
+.home-buttons a {
+    transition: all 0.3s ease;
+}
+
+.home-buttons a:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 0 12px rgba(0, 229, 255, 0.6),
+        0 0 25px rgba(0, 229, 255, 0.3);
+}
+/* ================================
+   NAVIGATION HOVER EFFECT
+================================ */
+
+.nav-links a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #00e5ff;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00e5ff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+/* ================================
+   ABOUT SECTION REVEAL
+================================ */
+
+.about {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.about.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* =================================
+   ATTRACTIVE AI TECH BACKGROUND
+================================= */
+
+body {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 85% 25%, rgba(120, 70, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(0, 229, 255, 0.08), transparent 30%),
+        #080c16;
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Subtle technology grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+
+    background-size: 50px 50px;
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Moving glow */
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    top: 10%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(0, 229, 255, 0.10),
+        transparent 65%
+    );
+
+    filter: blur(20px);
+
+    animation: backgroundGlow 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes backgroundGlow {
+
+    0% {
+        transform: translate(-60%, -40%) scale(0.8);
+    }
+
+    50% {
+        transform: translate(-40%, -50%) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-50%, -60%) scale(0.9);
     }
 }
