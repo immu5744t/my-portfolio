@@ -569,3 +569,50 @@ if (canvas) {
     drawNetwork();
 
 }
+
+/* ===== EMAILJS CONTACT FORM ===== */
+
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+const submitButton = contactForm?.querySelector('button[type="submit"]');
+
+if (contactForm && formStatus && submitButton && window.emailjs) {
+    emailjs.init({
+        publicKey: "eD3FBmiT61djghXaJ"
+    });
+
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (submitButton.disabled) return;
+
+        const originalText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+        formStatus.textContent = "";
+
+        try {
+            await emailjs.sendForm(
+                "service_2epr8zm",
+                "template_dvgdtud",
+                contactForm
+            );
+
+            formStatus.textContent =
+                "Message sent successfully! Thank you for reaching out.";
+            formStatus.style.color = "#00e5a8";
+
+            contactForm.reset();
+        } catch (error) {
+            console.error("EmailJS error:", error);
+
+            formStatus.textContent =
+                "Message could not be sent. Please try again.";
+            formStatus.style.color = "#ff7b8a";
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    });
+}
